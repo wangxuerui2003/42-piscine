@@ -5,49 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wxuerui <wxuerui@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 19:25:38 by wxuerui           #+#    #+#             */
-/*   Updated: 2022/05/21 21:45:07 by wxuerui          ###   ########.fr       */
+/*   Created: 2022/05/25 13:20:12 by wxuerui           #+#    #+#             */
+/*   Updated: 2022/05/25 16:55:16 by wxuerui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	print(int nb)
+void	ft_putnbr(int nb)
 {
 	char	c;
 
-	if (nb / 10 != 0)
+	c = 0;
+	if (nb == -2147483648)
 	{
-		if (nb < 0)
-		{
-			write(1, "-", 1);
-			print(nb / 10 * -1);
-		}
-		else
-		{
-			print(nb / 10);
-		}
+		write(1, "-2147483648", 11);
+		return ;
 	}
-	nb %= 10;
 	if (nb < 0)
 	{
+		write(1, "-", 1);
 		nb *= -1;
 	}
-	c = nb + 48;
-	write(1, &c, 1);
-}
-
-void	ft_putnbr(int nb)
-{
-	if (nb >= -2147483648 && nb <= 2147483647)
+	if (nb >= 10)
 	{
-		if (nb == 0)
-		{
-			write(1, "0", 1);
-		}
-		else
-		{
-			print(nb);
-		}
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+	{
+		c += (nb + '0');
+		write(1, &c, 1);
 	}
 }

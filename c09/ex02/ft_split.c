@@ -6,7 +6,7 @@
 /*   By: wxuerui <wxuerui@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:15:49 by wxuerui           #+#    #+#             */
-/*   Updated: 2022/06/04 14:25:04 by wxuerui          ###   ########.fr       */
+/*   Updated: 2022/06/04 17:55:23 by wxuerui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 		dest[i] = src[i];
 		i++;
 	}
-	dest[i] = '\0';
+	dest[i] = 0;
 	return (length);
 }
 
@@ -86,7 +86,7 @@ char	**ft_split(char *str, char *charset)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (str[i] && (j < get_length(str, charset)))
+	while (str[i] && j < get_length(str, charset))
 	{
 		while (str[i] && in_charset(str[i], charset))
 			i++;
